@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wildland Pest Control</title>
+    <!-- The default title and description are for the 'Home' page. -->
+    <title>Wildland Pest Control | Plymouth, MA</title>
+    <meta 
+        id="meta-description"
+        name="description" 
+        content="Environmentally-friendly pest control in Plymouth, MA. Wildland Pest Control offers safe, effective solutions for ticks, rodents, grubs, and insects. Get a free consultation."
+    >
+    
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Inter font -->
@@ -49,7 +56,7 @@
                     <a href="#" data-page="services" class="nav-link px-4 py-2 rounded-lg hover:bg-green-700 transition">Services</a>
                     <a href="#" data-page="diy" class="nav-link px-4 py-2 rounded-lg hover:bg-green-700 transition">DIY Tips</a>
                     <a href="#" data-page="faq" class="nav-link px-4 py-2 rounded-lg hover:bg-green-700 transition">FAQ</a>
-                    <a href="#" data-page="locations" class="nav-link px-4 py-2 rounded-lg hover:bg-green-700 transition">Locations</a>
+                    <a href="#" data-page="safety" class="nav-link px-4 py-2 rounded-lg hover:bg-green-700 transition">Safety & Labels</a>
                     <a href="#" data-page="contact" class="nav-link px-4 py-2 rounded-lg hover:bg-green-700 transition">Contact</a>
                 </nav>
 
@@ -70,7 +77,7 @@
                     <a href="#" data-page="services" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-green-600 transition">Services</a>
                     <a href="#" data-page="diy" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-green-600 transition">DIY Tips</a>
                     <a href="#" data-page="faq" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-green-600 transition">FAQ</a>
-                    <a href="#" data-page="locations" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-green-600 transition">Locations</a>
+                    <a href="#" data-page="safety" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-green-600 transition">Safety & Labels</a>
                     <a href="#" data-page="contact" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-green-600 transition">Contact</a>
                 </nav>
             </div>
@@ -108,8 +115,8 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Service Item -->
                         <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <h2 class="text-xl font-semibold text-green-700 mb-2">Rodenticide</h2>
-                            <p>Targeted and secure baiting solutions for mice and rats, following all safety protocols to protect children and pets.</p>
+                            <h2 class="text-xl font-semibold text-green-700 mb-2">Rodenticide & Trapping</h2>
+                            <p>Targeted and secure baiting solutions for mice and rats, following all safety protocols to protect children and pets. We also offer traditional trapping.</p>
                         </div>
                         <!-- Service Item -->
                         <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
@@ -137,6 +144,28 @@
                             <p>Safe and effective trapping and removal solutions for wasps, hornets, and yellow jackets, protecting your family from painful stings.</p>
                         </div>
                     </div>
+
+                    <!-- ADDED LOCATIONS CONTENT -->
+                    <hr class="my-8 border-gray-200">
+                    <div class="mt-8">
+                        <h1 class="text-3xl font-bold text-green-800 mb-4">Service Area</h1>
+                        <p class="text-lg mb-4">
+                            We are proud to be based in and serve historic <strong>Plymouth, Massachusetts</strong>.
+                        </p>
+                        <p class="mb-4">Our primary service area includes Plymouth and all surrounding towns. If you're nearby, give us a call!</p>
+                        <!-- Updated locations list -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Plymouth</div>
+                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Kingston</div>
+                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Carver</div>
+                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Wareham</div>
+                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Plympton</div>
+                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Sagamore</div>
+                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">...and more!</div>
+                        </div>
+                    </div>
+                    <!-- END OF ADDED CONTENT -->
+
                 </div>
             </div>
 
@@ -179,7 +208,7 @@
                 <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
                     <h1 class="text-3xl font-bold text-green-800 mb-6">Frequently Asked Questions</h1>
                     <div class="space-y-4">
-                        <!-- FAQ Item -->
+                        <!-- FAQ Item: Mouse -->
                         <div class="border border-gray-200 rounded-lg">
                             <button class="faq-toggle w-full flex justify-between items-center text-left p-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg focus:outline-none">
                                 <span class="text-lg font-semibold text-green-700">Mouse Questions</span>
@@ -193,10 +222,12 @@
                                 <p class="font-semibold mb-2">How do I know if I have mice?</p>
                                 <p class="mb-4">Look for droppings (small, dark pellets), gnaw marks on food packaging or wood, scratching sounds in walls, or nests made of shredded paper or fabric.</p>
                                 <p class="font-semibold mb-2">Are mice dangerous?</p>
-                                <p>Mice can spread diseases like Hantavirus and Salmonella through their droppings and urine. They can also chew through electrical wiring, creating a fire hazard.</p>
+                                <p class="mb-4">Mice can spread diseases like Hantavirus and Salmonella through their droppings and urine. They can also chew through electrical wiring, creating a fire hazard.</p>
+                                <p class="font-semibold mb-2">Why do my snap traps stop working?</p>
+                                <p>Traditional snap traps often seem to work at first, but rodents are neophobic (afraid of new things) and learn quickly. They will start to avoid the traps, making them ineffective for controlling a whole population.</p>
                             </div>
                         </div>
-                        <!-- FAQ Item -->
+                        <!-- FAQ Item: Rat -->
                         <div class="border border-gray-200 rounded-lg">
                             <button class="faq-toggle w-full flex justify-between items-center text-left p-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg focus:outline-none">
                                 <span class="text-lg font-semibold text-green-700">Rat Questions</span>
@@ -210,10 +241,12 @@
                                 <p class="font-semibold mb-2">What's the difference between mouse and rat droppings?</p>
                                 <p class="mb-4">Rat droppings are much larger, typically 1/2 to 3/4 inch long with blunt ends. Mouse droppings are smaller, about 1/4 inch, with pointed ends.</p>
                                 <p class="font-semibold mb-2">How do rats get in?</p>
-                                <p>Rats are excellent climbers and can squeeze through holes as small as a quarter. They often enter through gaps around pipes, vents, or foundations, and can even come up through sewer lines.</p>
+                                <p class="mb-4">Rats are excellent climbers and can squeeze through holes as small as a quarter. They often enter through gaps around pipes, vents, or foundations, and can even come up through sewer lines.</p>
+                                <p class="font-semibold mb-2">Does having rats mean my property is dirty?</p>
+                                <p>Not necessarily. While trash can attract them, rats are often displaced by nearby construction, forcing them into new yards. They are burrowing animals that live in tunnel systems and can establish a home anywhere with shelter and a food source.</p>
                             </div>
                         </div>
-                        <!-- FAQ Item -->
+                        <!-- FAQ Item: Tick -->
                         <div class="border border-gray-200 rounded-lg">
                             <button class="faq-toggle w-full flex justify-between items-center text-left p-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg focus:outline-none">
                                 <span class="text-lg font-semibold text-green-700">Tick Questions</span>
@@ -228,9 +261,9 @@
                                 <p class="mb-4">Ticks can be active any time the temperature is above freezing. However, activity peaks from April to July (nymphs) and again in the fall (adults).</p>
                                 <p class="font-semibold mb-2">How can I protect my yard from ticks?</p>
                                 <p>Keep your lawn mowed, remove leaf litter, create a barrier of wood chips or gravel between your lawn and wooded areas, and keep kids' play sets away from yard edges. Professional barrier sprays are also very effective.</p>
-                            </div>
+V                            </div>
                         </div>
-                        <!-- FAQ Item -->
+                        <!-- FAQ Item: Mole & Vole -->
                         <div class="border border-gray-200 rounded-lg">
                             <button class="faq-toggle w-full flex justify-between items-center text-left p-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg focus:outline-none">
                                 <span class="text-lg font-semibold text-green-700">Mole & Vole Questions</span>
@@ -247,27 +280,29 @@
                                 <p>Partially. Reducing their primary food source (grubs) can make your lawn less attractive, but moles also eat earthworms. Trapping is the most effective method for mole removal.</p>
                             </div>
                         </div>
+                        <!-- NEW FAQ Item: Pest Control Methods -->
+                        <div class="border border-gray-200 rounded-lg">
+                            <button class="faq-toggle w-full flex justify-between items-center text-left p-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg focus:outline-none">
+                                <span class="text-lg font-semibold text-green-700">Pest Control Method Questions</span>
+                                <span class="faq-icon text-green-700">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 transform transition-transform duration-300">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="faq-content hidden p-4 border-t border-gray-200">
+                                <p class="font-semibold mb-2">Is rodenticide safe to use around my pets?</p>
+                                <p class="mb-4">We use tamper-resistant bait stations as required by law, which keep bait secure from pets and children. However, there is always a risk of secondary poisoning. This can happen if a pet consumes a rodent that has ingested the bait. We take every precaution and discuss these risks with you.</p>
+                                <p class="font-semibold mb-2">How does the rodent contraceptive work? Is it safe?</p>
+                                <p>The contraceptive is a non-toxic, safe bait that reduces rodent fertility. It's an eco-friendly way to manage a population by slowing reproduction, not a poison. It is *not* a sterilization, so it needs to be maintained, but it's an excellent, safe tool for long-term population control.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Locations Page -->
-            <div id="locations" class="page-content hidden">
-                <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
-                    <h1 class="text-3xl font-bold text-green-800 mb-4">Service Area</h1>
-                    <p class="text-lg mb-4">
-                        We are proud to be based in and serve historic <strong>Plymouth, Massachusetts</strong>.
-                    </p>
-                    <p class="mb-4">Our primary service area includes Plymouth and all surrounding towns. If you're nearby, give us a call!</p>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                        <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Plymouth</div>
-                        <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Kingston</div>
-                        <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Carver</div>
-                        <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Wareham</div>
-                        <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Plympton</div>
-                    </div>
-                </div>
-            </div>
+            <!-- THIS PAGE'S CONTENT WAS MOVED TO THE 'SERVICES' PAGE -->
 
             <!-- Contact Page -->
             <div id="contact" class="page-content hidden">
@@ -286,7 +321,7 @@
                             <div>
                                 <h2 class="text-xl font-semibold">Phone</h2>
                                 <p class="text-gray-600">Call or text us for the fastest response.</p>
-                                <a href="tel:555-555-5555" class="text-lg text-green-700 hover:underline font-medium">(508) 503-9886</a>
+                                <a href="tel:508-503-9886" class="text-lg text-green-700 hover:underline font-medium">(508) 503-9886</a>
                             </div>
                         </div>
 
@@ -305,6 +340,7 @@
                         </div>
 
                         <!-- Mailing Address -->
+                        <!--
                         <div class="flex items-start space-x-4">
                             <div class="flex-shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-green-700">
@@ -318,9 +354,115 @@
                                 <p class="text-lg font-medium">PO Box TBD<br>Plymouth, MA 02360</p>
                             </div>
                         </div>
+                        -->
                     </div>
                 </div>
             </div>
+
+            <!-- New Safety Info Page (LD50 Calculator) -->
+            <div id="safety" class="page-content hidden">
+                <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
+                    <h1 class="text-3xl font-bold text-green-800 mb-4">LD50 Calculator & Safety Info</h1>
+                    
+                    <!-- Disclaimer -->
+                    <div class="bg-red-100 border-l-4 border-red-600 text-red-800 p-4 rounded-lg mb-6" role="alert">
+                        <p class="font-bold text-lg mb-2">CRITICAL SAFETY WARNING</p>
+                        <p>This calculator is for informational and educational purposes ONLY. It provides a theoretical dose calculation and is **NOT a substitute for professional veterinary advice.**</p>
+                        <p class="mt-2 font-semibold">If you suspect your pet has ingested ANY poison, contact your veterinarian or the <a href="https://www.aspca.org/pet-care/animal-poison-control" target="_blank" rel="noopener" class="underline hover:text-red-900">ASPCA Animal Poison Control Center</a> (888-426-4435) immediately.</p>
+                    </div>
+
+                    <!-- Calculator -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <h2 class="text-2xl font-semibold text-green-700 mb-4">Theoretical LD50 Calculator</h2>
+                        <p class="mb-4">This tool estimates the number of bait blocks an animal would need to consume to reach the LD50 (Lethal Dose, 50%) based on the product's active ingredient (AI) and the animal's body weight. The LD50 is the dose required to kill half the members of a tested population.</p>
+                        <!-- UPDATED NOTE -->
+                        <p class="mb-4 text-sm text-gray-600"><strong>Note:</strong> This calculator is hard-coded for a specific product example: a <strong>1 oz (28.35g) bait block</strong> containing <strong>0.005% active ingredient (approx 1.42mg)</strong>. The LD50 ratio is assumed at 1.47mg/kg.</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="animal-weight" class="block text-sm font-medium text-gray-700">1. Animal's Weight (in lbs)</label>
+                                <!-- UPDATED INPUT FIELD -->
+                                <input type="text" id="animal-weight" inputmode="decimal" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\./g, '$1')" class="mt-1 block w-full md:w-1/2 rounded-lg border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="e.g., 20">
+                            </div>
+                            
+                            <!-- REMOVED AI PER BLOCK INPUT FIELD -->
+                            
+                            <button id="calculate-ld50" class="px-6 py-2 bg-green-700 text-white font-semibold rounded-lg shadow-md hover:bg-green-800 transition focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                                Calculate
+                            </button>
+                        </div>
+                        
+                        <!-- Result -->
+                        <div id="ld50-result" class="mt-6 hidden">
+                            <h3 class="text-xl font-semibold">Result:</h3>
+                            <p class="text-lg p-4 bg-green-50 border border-green-200 rounded-lg"></p>
+                            <p class="text-sm text-gray-600 mt-2">
+                                <strong>Note:</strong> This result represents the number of blocks the animal would need to consume *directly* to reach the theoretical LD50, based on your inputs and the 1.47 mg/kg ratio. This is not a toxicity guarantee.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ADDED LABELS & SDS CONTENT -->
+                    <hr class="my-8 border-gray-200">
+                    <div class="mt-8">
+                        <h1 class="text-3xl font-bold text-green-800 mb-6">Product Labels & SDS</h1>
+                        <p class="text-lg mb-6">For your convenience and safety, we provide links to the manufacturer's product labels and Safety Data Sheets (SDS) for the materials we may use. Always read the label before any application.</p>
+                        
+                        <div class="space-y-6">
+                            <!-- Section: Rodenticides -->
+                            <div>
+                                <h2 class="text-2xl font-semibold text-green-700 mb-3 pb-2 border-b border-gray-200">Rodenticides</h2>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>
+                                        <strong class="font-medium">Product Name 1:</strong>
+                                        <a href="#" class="text-green-700 hover:underline ml-2">[View Label]</a>
+                                        <a href="#" class="text-green-700 hover:underline ml-2">[View SDS]</a>
+                                    </li>
+                                    <li>
+                                        <strong class="font-medium">Product Name 2 (e.g., Contraceptive):</strong>
+                                        <a href="#" class="text-green-700 hover:underline ml-2">[View Label]</a>
+                                        <a href="#" class="text-green-700 hover:underline ml-2">[View SDS]</a>
+                                    </li>
+                                    <!-- Add more as needed -->
+                                    <li class="text-gray-500">More product links coming soon...</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Section: Tick & Grub Control -->
+                            <div>
+                                <h2 class="text-2xl font-semibold text-green-700 mb-3 pb-2 border-b border-gray-200">Tick & Grub Control</h2>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>
+                                        <strong class="font-medium">Product Name 3:</strong>
+                                        <a href="#" class="text-green-700 hover:underline ml-2">[View Label]</a>
+                                        <a href="#" class="text-green-700 hover:underline ml-2">[View SDS]</a>
+                                    </li>
+                                    <li class="text-gray-500">More product links coming soon...</li>
+                                </ul>
+                            </div>
+
+                            <!-- Section: Perimeter Spray -->
+                            <div>
+                                <h2 class="text-2xl font-semibold text-green-700 mb-3 pb-2 border-b border-gray-200">Perimeter Spray</h2>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>
+                                        <strong class="font-medium">Product Name 4:</strong>
+                                        <a href="#" class="text-green-700 hover:underline ml-2">[View Label]</a>
+                                        <a href="#" class="text-green-700 hover:underline ml-2">[View SDS]</a>
+                                    </li>
+                                    <li class="text-gray-500">More product links coming soon...</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END OF ADDED CONTENT -->
+
+                </div>
+            </div>
+
+            <!-- New Labels & SDS Page -->
+            <!-- THIS PAGE'S CONTENT WAS MOVED TO THE 'SAFETY' PAGE -->
+
 
         </main>
 
@@ -337,6 +479,36 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Set current year in footer
             document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // --- SEO Data ---
+            // Store the titles and descriptions for each page
+            const pageSeo = {
+                'home': {
+                    'title': 'Wildland Pest Control | Plymouth, MA',
+                    'description': 'Environmentally-friendly pest and critter control in Plymouth, MA. Wildland Pest Control offers safe, effective solutions for ticks, rodents, grubs, and insects. Get a free consultation.'
+                },
+                'services': {
+                    'title': 'Pest Control Services | Wildland Pest Control',
+                    'description': 'Our local pest and critter control services include rodent contraceptive, tick/grub control, and perimeter spraying. Serving Plymouth, MA, Kingston, Carver, and more.'
+                },
+                'diy': {
+                    'title': 'DIY Pest Control Tips | Wildland Pest Control',
+                    'description': 'Learn effective DIY pest and critter control from the experts. How to make homemade tick tubes and safe Borax ant treatments to protect your home.'
+                },
+                'faq': {
+                    'title': 'Pest Control FAQ | Wildland Pest Control',
+                    'description': 'Pest and critter questions? Our FAQ answers common questions about mice, rats, ticks in Massachusetts, and the difference between moles and voles. Get answers now.'
+                },
+                'safety': {
+                    'title': 'Safety, Labels & SDS | Wildland Pest Control',
+                    'description': 'View safety info, product labels, SDS, and use our educational LD50 calculator. Not a substitute for professional veterinary advice.'
+                },
+                'contact': {
+                    'title': 'Contact Us | Wildland Pest Control',
+                    'description': 'Contact Wildland Pest Control today for a free consultation. Call or email us to schedule your environmentally-safe pest and critter control service in the Plymouth, MA area.'
+                }
+            };
+            const metaDescriptionTag = document.getElementById('meta-description');
 
             // --- Page Navigation Logic ---
             const allPages = document.querySelectorAll('.page-content');
@@ -356,6 +528,11 @@
                 if (targetPage) {
                     targetPage.classList.remove('hidden');
                 }
+
+                // --- Update SEO ---
+                const seoData = pageSeo[pageId] || pageSeo['home'];
+                document.title = seoData.title;
+                metaDescriptionTag.setAttribute('content', seoData.description);
 
                 // Update active state for desktop nav
                 navLinks.forEach(link => {
@@ -425,8 +602,47 @@
                 });
             });
 
+            // --- LD50 Calculator Logic ---
+            const calculateBtn = document.getElementById('calculate-ld50');
+            const weightInput = document.getElementById('animal-weight');
+            // REMOVED AI INPUT
+            const resultDiv = document.getElementById('ld50-result');
+            const resultText = resultDiv.querySelector('p');
+
+            calculateBtn.addEventListener('click', function() {
+                const weightLbs = parseFloat(weightInput.value);
+                // REMOVED AI PARSE
+                // UPDATED: 1 oz (28349.5mg) * 0.005% (0.00005) = 1.417475 mg
+                const aiPerBlock = 1.417475; 
+                
+                // UPDATED Validation
+                if (isNaN(weightLbs) || weightLbs <= 0) {
+                    resultText.innerHTML = '<span class="font-semibold text-red-600">Please enter a valid, positive number for weight.</span>';
+                    resultDiv.classList.remove('hidden');
+                    return;
+                }
+                
+                // --- Calculation ---
+                // 1. Convert lbs to kg
+                const weightKg = weightLbs * 0.453592;
+                
+                // 2. Calculate total mg for LD50 (using your provided 1.47 mg/kg ratio)
+                const totalMgLD50 = weightKg * 1.47;
+                
+                // 3. Calculate number of blocks
+                const blocksToConsume = totalMgLD50 / aiPerBlock;
+                
+                // 4. Display result
+                resultText.innerHTML = `A theoretical LD50 dose for a <span class="font-semibold">${weightLbs} lb</span> animal would require consuming <span class="font-semibold">${blocksToConsume.toFixed(2)}</span> blocks.`;
+                resultDiv.classList.remove('hidden');
+            });
+
         });
     </script>
 
 </body>
 </html>
+
+
+
+
