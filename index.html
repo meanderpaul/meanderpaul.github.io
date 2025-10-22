@@ -1,376 +1,517 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-m">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The default title and description are for the 'Home' page. -->
-    <title>Wildland Pest Control | Plymouth, MA</title>
-    <meta 
-        id="meta-description"
-        name="description" 
-        content="Environmentally-friendly pest control in Plymouth, MA. Wildland Pest Control offers safe, effective solutions for ticks, rodents, grubs, and insects. Get a free consultation."
-    >
     
-    <!-- Load Tailwind CSS -->
+    <!-- SEO Meta Tags (Defaults) -->
+    <!-- This title is updated by JavaScript -->
+    <title>Wildland Pest Control - Plymouth, MA</title> 
+    <!-- This description is updated by JavaScript -->
+    <meta name="description" content="Eco-friendly pest control for Plymouth, MA. We specialize in ticks, rodents (mice, rats), and stinging insects using safe, effective solutions.">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Inter font -->
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Load Heroicons for menu icon -->
-    <script type_module src="https://unpkg.com/heroicons@2.1.1/24/outline/index.js"></script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@0.363.0/dist/umd/lucide.min.js"></script>
+
+    <!-- Local Business Schema (for Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Wildland Pest Control",
+      "telephone": "(508) 503-9886",
+      "email": "wildlandpest@gmail.com",
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Plymouth"
+        },
+        {
+          "@type": "Place",
+          "name": "Kingston"
+        },
+        {
+          "@type": "Place",
+          "name": "Carver"
+        },
+        {
+          "@type": "Place",
+          "name": "Wareham"
+        },
+        {
+          "@type": "Place",
+          "name": "Plympton"
+        },
+        {
+          "@type": "Place",
+          "name":"Sagamore"
+        }
+      ],
+      "description": "Environmentally-friendly and effective pest control services for ticks, rodents, and insects in Plymouth, MA and surrounding towns."
+    }
+    </script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        /* Simple transition for page content */
-        .page-content {
-            transition: opacity 0.3s ease-in-out;
+        /* Style for the FAQ toggle */
+        .faq-answer {
+            transition: max-height 0.3s ease-out, opacity 0.2s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
         }
-        /* Custom class for active nav link */
-        .nav-link-active {
-            background-color: #22543D; /* Darker green */
-            color: white;
+        .faq-item.open .faq-answer {
+            max-height: 1000px; /* arbitrary large value */
+            opacity: 1;
         }
-        /* Custom class for mobile active nav link */
-        .mobile-nav-link-active {
-            background-color: #38A169; /* Brighter green */
-            color: white;
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+        .faq-arrow {
+            transition: transform 0.3s ease;
+        }
+        /* Custom map embed styles */
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        /* Style for active nav link */
+        .nav-link.active {
+            color: #047857; /* text-green-700 */
+            border-bottom: 2px solid #047857;
+        }
+        .mobile-nav-link.active {
+            background-color: #D1FAE5; /* bg-green-100 */
+            color: #047857; /* text-green-700 */
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-100 h-full flex flex-col">
 
-    <div class="min-h-screen flex flex-col">
-        <!-- Header -->
-        <header class="bg-green-800 text-white shadow-lg sticky top-0 z-50">
-            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-                <!-- Logo/Brand Name -->
-                <div class="text-2xl md:text-3xl font-bold">
-                    Wildland Pest Control
+    <!-- Header -->
+    <header class="bg-white shadow-md w-full sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" data-page="home" class="nav-link-logo">
+                        <!-- *** LOGO UPDATED HERE *** -->
+                        <img src="/photos/logo.webp" 
+                             alt="Wildland Pest Control Logo" 
+                             class="h-10 md:h-12 w-auto"
+                             onerror="this.style.display='none'; this.after(document.createTextNode('Wildland Pest Control'))"> <!-- Fallback text if logo fails to load -->
+                    </a>
                 </div>
-
+                
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-2">
-                    <a href="#" data-page="home" class="nav-link nav-link-active px-4 py-2 rounded-lg hover:bg-green-700 transition">Home</a>
-                    <a href="#" data-page="services" class="nav-link px-4 py-2 rounded-lg hover:bg-green-700 transition">Services</a>
-                    <a href="#" data-page="diy" class="nav-link px-4 py-2 rounded-lg hover:bg-green-700 transition">DIY Tips</a>
-                    <a href="#" data-page="faq" class="nav-link px-4 py-2 rounded-lg hover:bg-green-700 transition">FAQ</a>
-                    <a href="#" data-page="safety" class="nav-link px-4 py-2 rounded-lg hover:bg-green-700 transition">Safety & Labels</a>
-                    <a href="#" data-page="contact" class="nav-link px-4 py-2 rounded-lg hover:bg-green-700 transition">Contact</a>
-                </nav>
-
+                <div class="hidden md:flex md:space-x-8">
+                    <a href="#" data-page="home" class="nav-link text-gray-500 hover:text-gray-900 px-1 py-4 text-sm font-medium">Home</a>
+                    <a href="#" data-page="services" class="nav-link text-gray-500 hover:text-gray-900 px-1 py-4 text-sm font-medium">Services & Locations</a>
+                    <a href="#" data-page="diy" class="nav-link text-gray-500 hover:text-gray-900 px-1 py-4 text-sm font-medium">DIY Tips</a>
+                    <a href="#" data-page="faq" class="nav-link text-gray-500 hover:text-gray-900 px-1 py-4 text-sm font-medium">FAQ</a>
+                    <a href="#" data-page="safety" class="nav-link text-gray-500 hover:text-gray-900 px-1 py-4 text-sm font-medium">Safety & Labels</a>
+                    <a href="#" data-page="contact" class="nav-link text-gray-500 hover:text-gray-900 px-1 py-4 text-sm font-medium">Contact</a>
+                </div>
+                
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-white focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg id="menu-icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg id="menu-icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
             </div>
+        </nav>
 
-            <!-- Mobile Menu (Hidden by default) -->
-            <div id="mobile-menu" class="hidden md:hidden bg-green-700">
-                <nav class="flex flex-col p-4 space-y-2">
-                    <a href="#" data-page="home" class="mobile-nav-link mobile-nav-link-active block px-4 py-3 rounded-lg hover:bg-green-600 transition">Home</a>
-                    <a href="#" data-page="services" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-green-600 transition">Services</a>
-                    <a href="#" data-page="diy" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-green-600 transition">DIY Tips</a>
-                    <a href="#" data-page="faq" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-green-600 transition">FAQ</a>
-                    <a href="#" data-page="safety" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-green-600 transition">Safety & Labels</a>
-                    <a href="#" data-page="contact" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-green-600 transition">Contact</a>
-                </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" data-page="home" class="mobile-nav-link text-gray-700 hover:bg-gray-50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#" data-page="services" class="mobile-nav-link text-gray-700 hover:bg-gray-50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Services & Locations</a>
+                <a href="#" data-page="diy" class="mobile-nav-link text-gray-700 hover:bg-gray-50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">DIY Tips</a>
+                <a href="#" data-page="faq" class="mobile-nav-link text-gray-700 hover:bg-gray-50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
+                <a href="#" data-page="safety" class="mobile-nav-link text-gray-700 hover:bg-gray-50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Safety & Labels</a>
+                <a href="#" data-page="contact" class="mobile-nav-link text-gray-700 hover:bg-gray-50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <!-- Main Content Area -->
-        <main class="container mx-auto px-4 py-8 flex-grow">
-            
-            <!-- Home (About) Page -->
-            <div id="home" class="page-content">
-                <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
-                    <h1 class="text-3xl font-bold text-green-800 mb-4">Welcome to Wildland Pest Control</h1>
-                    <p class="text-lg mb-4">
-                        We are your local, environmentally-conscious solution for pest management in Plymouth, MA, and the surrounding areas. Our mission is to protect your home and family from unwanted pests while preserving the natural beauty of our local ecosystem.
-                    </p>
-                    <p class="mb-4">
-                        At Wildland Pest Control, we believe in integrated pest management (IPM). This means we don't just spray and pray. We inspect, identify, and create a targeted plan that is both effective and minimally invasive. We prioritize non-chemical solutions and environmentally friendly products whenever possible.
-                    </p>
-                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
-                        <p class="font-semibold">Our Commitment:</p>
-                        <ul class="list-disc list-inside ml-4 mt-2">
-                            <li>Effective, long-term pest solutions.</li>
-                            <li>Environmentally responsible methods.</li>
-                            <li>Friendly, professional, and local service.</li>
-                            <li>Peace of mind for you and your family.</li>
-                        </ul>
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow">
+        <!-- Pages will be injected here by JavaScript -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 mt-12">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; <span id="current-year"></span> Wildland Pest Control. All rights reserved.</p>
+            <p class="text-sm">Serving Plymouth, MA and surrounding areas.</p>
+        </div>
+    </footer>
+
+    <!-- Page Templates (Hidden) -->
+    <template id="page-home">
+        <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                <!-- Hero Image -->
+                <div class="relative">
+                    <!-- 
+                      FIX: The placeholder image had text "Eco-Friendly Pest Control" 
+                      baked into it, which clashed with the overlay text.
+                      I've changed the placeholder to a simple green background by removing the text query.
+                    -->
+                    <img class="h-56 w-full object-cover sm:h-72 md:h-96" src="https://placehold.co/1200x400/065f46/FFFFFF?text=" alt="Wildland Pest Control hero image">
+                    <div class="absolute inset-0 bg-gray-700 bg-opacity-60"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center px-4">
+                            Safe, Effective & Environmentally-Friendly
+                        </h1>
+                    </div>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="p-6 sm:p-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">About Wildland Pest Control</h2>
+                    <div class="space-y-4 text-gray-700 leading-relaxed">
+                        <p>Welcome to Wildland Pest Control, your locally-owned solution for responsible and effective pest management. Based in Plymouth, Massachusetts, we are dedicated to protecting your home and family from unwanted pests while prioritizing the safety of our local environment, pets, and non-target wildlife.</p>
+                        <p>Our approach is simple: use modern, targeted, and environmentally-conscious methods to solve your pest problems. We believe in integrated pest management (IPM), which means we don't just spray and pray. We inspect, identify, and create a custom plan that addresses the root of the problem.</p>
+                        <p>Whether you're dealing with ticks in the yard, rodents in the attic, or stinging insects too close for comfort, we have the expertise to handle it. We specialize in solutions that are tough on pests but gentle on the ecosystem, including innovative options like rodent contraceptives and targeted trapping.</p>
+                        <p>At Wildland Pest Control, we're not just a service; we're your neighbors. We are committed to providing transparent, honest, and reliable service to our community. Explore our services to learn more about how we can help you reclaim your home.</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </template>
 
-            <!-- Services Page -->
-            <div id="services" class="page-content hidden">
-                <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
-                    <h1 class="text-3xl font-bold text-green-800 mb-6">Our Services</h1>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Service Item -->
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <h2 class="text-xl font-semibold text-green-700 mb-2">Rodenticide & Trapping</h2>
-                            <p>Targeted and secure baiting solutions for mice and rats, following all safety protocols to protect children and pets. We also offer traditional trapping.</p>
-                        </div>
-                        <!-- Service Item -->
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <h2 class="text-xl font-semibold text-green-700 mb-2">Rodent Contraceptive</h2>
-                            <p>An innovative, long-term solution to manage rodent populations by controlling their ability to reproduce. An environmentally sound approach to population reduction.</p>
-                        </div>
-                        <!-- Service Item -->
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <h2 class="text-xl font-semibold text-green-700 mb-2">Tick Control</h2>
-                            <p>Targeted treatments for your yard to reduce tick populations and protect your family and pets from Lyme disease and other tick-borne illnesses.</p>
-                        </div>
-                        <!-- Service Item -->
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <h2 class="text-xl font-semibold text-green-700 mb-2">Grub Control</h2>
-                            <p>Protect your lawn from destructive grubs. Our treatments stop grubs before they can cause widespread damage to your turf.</p>
-                        </div>
-                        <!-- Service Item -->
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <h2 class="text-xl font-semibold text-green-700 mb-2">Perimeter Crack & Crevice Spraying</h2>
-                            <p>We create a barrier around your home's foundation, targeting entry points for ants, spiders, and other crawling insects to keep them outside where they belong.</p>
-                        </div>
-                        <!-- Service Item -->
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <h2 class="text-xl font-semibold text-green-700 mb-2">Stinging Insect Trapping</h2>
-                            <p>Safe and effective trapping and removal solutions for wasps, hornets, and yellow jackets, protecting your family from painful stings.</p>
-                        </div>
-                    </div>
+    <template id="page-services">
+        <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden p-6 sm:p-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-6">Our Services</h1>
+                <p class="text-lg text-gray-700 mb-8">We offer a range of targeted, eco-friendly services to protect your home and property. All services are performed by a licensed and insured professional.</p>
 
-                    <!-- ADDED LOCATIONS CONTENT -->
-                    <hr class="my-8 border-gray-200">
-                    <div class="mt-8">
-                        <h1 class="text-3xl font-bold text-green-800 mb-4">Service Area</h1>
-                        <p class="text-lg mb-4">
-                            We are proud to be based in and serve historic <strong>Plymouth, Massachusetts</strong>.
-                        </p>
-                        <p class="mb-4">Our primary service area includes Plymouth and all surrounding towns. If you're nearby, give us a call!</p>
-                        <!-- Updated locations list -->
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Plymouth</div>
-                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Kingston</div>
-                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Carver</div>
-                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Wareham</div>
-                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Plympton</div>
-                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">Sagamore</div>
-                            <div class="bg-green-50 p-3 rounded-lg text-center font-medium">...and more!</div>
-                        </div>
-                    </div>
-                    <!-- END OF ADDED CONTENT -->
-
-                </div>
-            </div>
-
-            <!-- DIY Page -->
-            <div id="diy" class="page-content hidden">
-                <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
-                    <h1 class="text-3xl font-bold text-green-800 mb-6">DIY Pest Control Tips</h1>
-                    <p class="mb-6 text-lg">While we always recommend professional help for persistent infestations, here are a couple of DIY methods you can try for minor issues. <span class="font-semibold">Use at your own discretion.</span></p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
-                    <!-- DIY Item 1 -->
-                    <div class="mb-6">
-                        <h2 class="text-2xl font-semibold text-green-700 mb-2">Home-Made Tick Tubes</h2>
-                        <p class="mb-2">Tick tubes are a great way to target ticks that live on mice and chipmunks. These rodents are the primary carriers of Lyme disease.</p>
-                        <ul class="list-disc list-inside ml-4 space-y-1">
-                            <li><strong>Materials:</strong> Cardboard tubes (from paper towels or toilet paper) and permethrin-treated cotton balls (available online or at outdoor stores).</li>
-                            <li><strong>Assembly:</strong> Stuff 3-4 cotton balls loosely into each cardboard tube.</li>
-                            <li><strong>Placement:</strong> Place the tubes in areas where mice and chipmunks travel, such as under bushes, in woodpiles, along stone walls, or under sheds.</li>
-                            <li><strong>How it works:</strong> The rodents will take the treated cotton back to their nests for bedding. The permethrin is harmless to the rodents but kills any ticks that are feeding on them or in their nests.</li>
-                        </ul>
-                        <p class="mt-2 text-sm text-red-600 font-medium"><strong>Caution:</strong> Permethrin is toxic to cats when wet. Ensure cotton is handled safely and placed where pets will not directly interact with it.</p>
+                    <!-- Service Item -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <span class="flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-700">
+                                <i data-lucide="mouse-pointer-ban"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Rodenticide Programs</h3>
+                            <p class="mt-1 text-gray-600">Strategic and safe use of rodenticides in tamper-proof stations to control mice and rat populations. We follow strict protocols to protect pets and non-target wildlife.</p>
+                        </div>
                     </div>
 
-                    <!-- DIY Item 2 -->
-                    <div>
-                        <h2 class="text-2xl font-semibold text-green-700 mb-2">Borax Ant Treatments</h2>
-                        <p class="mb-2">You can create a simple, effective ant bait using Borax (a laundry booster) and sugar.</p>
-                        <ul class="list-disc list-inside ml-4 space-y-1">
-                            <li><strong>Ingredients:</strong> 1 part Borax, 3 parts powdered sugar.</li>
-                            <li><strong>Mixing:</strong> Mix the Borax and powdered sugar thoroughly. The sugar attracts the ants, and the Borax is toxic to them.</li>
-                            <li><strong>Placement:</strong> Place small amounts (e.g., in a bottle cap) near ant trails but out of reach of children and pets.</li>
-                            <li><strong>How it works:</strong> Ants will carry the bait back to their colony, which helps to eliminate the entire nest, including the queen.</li>
-                        </ul>
-                        <p class="mt-2 text-sm text-red-600 font-medium"><strong>Caution:</strong> Borax can be harmful if ingested. Keep it away from children and pets.</p>
+                    <!-- Service Item -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <span class="flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-700">
+                                <i data-lucide="bird"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Rodent Contraceptive</h3>
+                            <p class="mt-1 text-gray-600">A modern, non-toxic approach to long-term rodent control. This bait controls populations by restricting fertility, leading to a sustainable and effective reduction in numbers without traditional poisons.</p>
+                        </div>
                     </div>
+
+                    <!-- Service Item -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <span class="flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-700">
+                                <i data-lucide="check-shield"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Tick Control</h3>
+                            <p class="mt-1 text-gray-600">Targeted yard sprays focused on perimeter areas, leaf litter, and property borders to significantly reduce tick populations and protect your family and pets.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service Item -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <span class="flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-700">
+                                <i data-lucide="bug"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Grub Control</h3>
+                            <p class="mt-1 text-gray-600">Protect your lawn from destructive grubs. Our treatments are applied at the right time of year to prevent grubs from damaging your turf and to control moles/voles that feed on them.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service Item -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <span class="flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-700">
+                                <i data-lucide="home"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Perimeter Crack & Crevice</h3>
+                            <p class="mt-1 text-gray-600">A preventative barrier spray for your home's foundation. This service targets entry points to stop ants, spiders, and other crawling insects before they get inside.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service Item -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <span class="flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-700">
+                                <i data-lucide="bee"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Stinging Insect Trapping</h3>
+                            <p class="mt-1 text-gray-600">Safe and environmentally-friendly trapping programs for wasps, hornets, and yellow jackets. We strategically place traps to capture queens in the spring and reduce nest-building activity all season.</p>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
 
-            <!-- FAQ Page -->
-            <div id="faq" class="page-content hidden">
-                <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
-                    <h1 class="text-3xl font-bold text-green-800 mb-6">Frequently Asked Questions</h1>
-                    <div class="space-y-4">
-                        <!-- FAQ Item: Mouse -->
-                        <div class="border border-gray-200 rounded-lg">
-                            <button class="faq-toggle w-full flex justify-between items-center text-left p-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg focus:outline-none">
-                                <span class="text-lg font-semibold text-green-700">Mouse Questions</span>
-                                <span class="faq-icon text-green-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 transform transition-transform duration-300">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                            <div class="faq-content hidden p-4 border-t border-gray-200">
-                                <p class="font-semibold mb-2">How do I know if I have mice?</p>
-                                <p class="mb-4">Look for droppings (small, dark pellets), gnaw marks on food packaging or wood, scratching sounds in walls, or nests made of shredded paper or fabric.</p>
-                                <p class="font-semibold mb-2">Are mice dangerous?</p>
-                                <p class="mb-4">Mice can spread diseases like Hantavirus and Salmonella through their droppings and urine. They can also chew through electrical wiring, creating a fire hazard.</p>
-                                <p class="font-semibold mb-2">Why do my snap traps stop working?</p>
-                                <p>Traditional snap traps often seem to work at first, but rodents are neophobic (afraid of new things) and learn quickly. They will start to avoid the traps, making them ineffective for controlling a whole population.</p>
-                            </div>
-                        </div>
-                        <!-- FAQ Item: Rat -->
-                        <div class="border border-gray-200 rounded-lg">
-                            <button class="faq-toggle w-full flex justify-between items-center text-left p-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg focus:outline-none">
-                                <span class="text-lg font-semibold text-green-700">Rat Questions</span>
-                                <span class="faq-icon text-green-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 transform transition-transform duration-300">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                            <div class="faq-content hidden p-4 border-t border-gray-200">
-                                <p class="font-semibold mb-2">What's the difference between mouse and rat droppings?</p>
-                                <p class="mb-4">Rat droppings are much larger, typically 1/2 to 3/4 inch long with blunt ends. Mouse droppings are smaller, about 1/4 inch, with pointed ends.</p>
-                                <p class="font-semibold mb-2">How do rats get in?</p>
-                                <p class="mb-4">Rats are excellent climbers and can squeeze through holes as small as a quarter. They often enter through gaps around pipes, vents, or foundations, and can even come up through sewer lines.</p>
-                                <p class="font-semibold mb-2">Does having rats mean my property is dirty?</p>
-                                <p>Not necessarily. While trash can attract them, rats are often displaced by nearby construction, forcing them into new yards. They are burrowing animals that live in tunnel systems and can establish a home anywhere with shelter and a food source.</p>
-                            </div>
-                        </div>
-                        <!-- FAQ Item: Tick -->
-                        <div class="border border-gray-200 rounded-lg">
-                            <button class="faq-toggle w-full flex justify-between items-center text-left p-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg focus:outline-none">
-                                <span class="text-lg font-semibold text-green-700">Tick Questions</span>
-                                <span class="faq-icon text-green-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 transform transition-transform duration-300">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                            <div class="faq-content hidden p-4 border-t border-gray-200">
-                                <p class="font-semibold mb-2">When is tick season in Massachusetts?</p>
-                                <p class="mb-4">Ticks can be active any time the temperature is above freezing. However, activity peaks from April to July (nymphs) and again in the fall (adults).</p>
-                                <p class="font-semibold mb-2">How can I protect my yard from ticks?</p>
-                                <p>Keep your lawn mowed, remove leaf litter, create a barrier of wood chips or gravel between your lawn and wooded areas, and keep kids' play sets away from yard edges. Professional barrier sprays are also very effective.</p>
-V                            </div>
-                        </div>
-                        <!-- FAQ Item: Mole & Vole -->
-                        <div class="border border-gray-200 rounded-lg">
-                            <button class="faq-toggle w-full flex justify-between items-center text-left p-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg focus:outline-none">
-                                <span class="text-lg font-semibold text-green-700">Mole & Vole Questions</span>
-                                <span class="faq-icon text-green-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 transform transition-transform duration-300">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                            <div class="faq-content hidden p-4 border-t border-gray-200">
-                                <p class="font-semibold mb-2">What's the difference between a mole and a vole?</p>
-                                <p class="mb-4"><strong>Moles</strong> are insectivores. They eat grubs and earthworms. They create raised tunnels (surface runways) and large, volcano-shaped mounds of dirt. <strong>Voles</strong> are rodents (like mice) that eat plants, including bulbs and tree bark. They create "runways" on the surface of the grass, often hidden under snow or mulch, and small, 1-inch wide holes that are flush with the ground.</p>
-                                <p class="font-semibold mb-2">Is grub control effective for moles?</p>
-                                <p>Partially. Reducing their primary food source (grubs) can make your lawn less attractive, but moles also eat earthworms. Trapping is the most effective method for mole removal.</p>
-                            </div>
-                        </div>
-                        <!-- NEW FAQ Item: Pest Control Methods -->
-                        <div class="border border-gray-200 rounded-lg">
-                            <button class="faq-toggle w-full flex justify-between items-center text-left p-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg focus:outline-none">
-                                <span class="text-lg font-semibold text-green-700">Pest Control Method Questions</span>
-                                <span class="faq-icon text-green-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 transform transition-transform duration-300">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                            <div class="faq-content hidden p-4 border-t border-gray-200">
-                                <p class="font-semibold mb-2">Is rodenticide safe to use around my pets?</p>
-                                <p class="mb-4">We use tamper-resistant bait stations as required by law, which keep bait secure from pets and children. However, there is always a risk of secondary poisoning. This can happen if a pet consumes a rodent that has ingested the bait. We take every precaution and discuss these risks with you.</p>
-                                <p class="font-semibold mb-2">How does the rodent contraceptive work? Is it safe?</p>
-                                <p>The contraceptive is a non-toxic, safe bait that reduces rodent fertility. It's an eco-friendly way to manage a population by slowing reproduction, not a poison. It is *not* a sterilization, so it needs to be maintained, but it's an excellent, safe tool for long-term population control.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Locations Page -->
-            <!-- THIS PAGE'S CONTENT WAS MOVED TO THE 'SERVICES' PAGE -->
-
-            <!-- Contact Page -->
-            <div id="contact" class="page-content hidden">
-                <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
-                    <h1 class="text-3xl font-bold text-green-800 mb-6">Get in Touch</h1>
-                    <p class="text-lg mb-6">Ready to solve your pest problem? Contact us today for a free consultation or to schedule a service.</p>
+                <!-- Locations Section -->
+                <div class="mt-16 pt-8 border-t border-gray-200">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Service Area</h2>
+                    <p class="text-lg text-gray-700 mb-8">We are proud to serve Plymouth, Massachusetts, and our neighbors in the surrounding towns. Our local focus allows us to provide prompt, reliable service.</p>
                     
-                    <div class="space-y-6">
-                        <!-- Phone -->
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-green-700">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.892-1.467-5.217-3.792-6.684-6.684l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h2 class="text-xl font-semibold">Phone</h2>
-                                <p class="text-gray-600">Call or text us for the fastest response.</p>
-                                <a href="tel:508-503-9886" class="text-lg text-green-700 hover:underline font-medium">(508) 503-9886</a>
-                            </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <!-- Map -->
+                        <div class="map-container rounded-lg shadow-md overflow-hidden">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d190028.36881267678!2d-70.8801607599026!3d41.87192795123984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e4a346e3010a3f%3A0x1c6e1cfc6b776c96!2sPlymouth%2C%20MA!5e0!3m2!1sen!2sus!4v1683215167621!5m2!1sen!2sus" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
                         </div>
-
-                        <!-- Email -->
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-green-700">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h2 class="text-xl font-semibold">Email</h2>
-                                <p class="text-gray-600">For non-urgent inquiries and questions.</p>
-                                <a href="mailto:contact@wildlandpest.com" class="text-lg text-green-700 hover:underline font-medium">contact@wildlandpest.com</a>
-                            </div>
+                        
+                        <!-- Town List -->
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Our primary service locations include:</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center text-gray-700">
+                                    <i data-lucide="map-pin" class="h-5 w-5 text-green-600 mr-3"></i>
+                                    Plymouth
+                                </li>
+                                <li class="flex items-center text-gray-700">
+                                    <i data-lucide="map-pin" class="h-5 w-5 text-green-600 mr-3"></i>
+                                    Kingston
+                                </li>
+                                <li class="flex items-center text-gray-700">
+                                    <i data-lucide="map-pin" class="h-5 w-5 text-green-600 mr-3"></i>
+                                    Carver
+                                </li>
+                                <li class="flex items-center text-gray-700">
+                                    <i data-lucide="map-pin" class="h-5 w-5 text-green-600 mr-3"></i>
+                                    Wareham
+                                </li>
+                                <li class="flex items-center text-gray-700">
+                                    <i data-lucide="map-pin" class="h-5 w-5 text-green-600 mr-3"></i>
+                                    Plympton
+                                </li>
+                                <li class="flex items-center text-gray-700">
+                                    <i data-lucide="map-pin" class="h-5 w-5 text-green-600 mr-3"></i>
+                                    Sagamore
+                                </li>
+                            </ul>
+                            <p class="mt-4 text-gray-600">Don't see your town listed? Give us a call! We may be able to service your area.</p>
                         </div>
-
-                        <!-- Mailing Address -->
-                        <!--
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-green-700">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 19.5v-15A2.25 2.25 0 0 1 5.25 2.25h13.5A2.25 2.25 0 0 1 21 4.5v15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 19.5Z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h10.5v3.75H6.75V6.75Z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h2 class="text-xl font-semibold">Mailing Address</h2>
-                                <p class="text-gray-600">For payments and correspondence.</p>
-                                <p class="text-lg font-medium">PO Box TBD<br>Plymouth, MA 02360</p>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 </div>
-            </div>
 
-            <!-- New Safety Info Page (LD50 Calculator) -->
-            <div id="safety" class="page-content hidden">
-                <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
-                    <h1 class="text-3xl font-bold text-green-800 mb-4">LD50 Calculator & Safety Info</h1>
+            </div>
+        </div>
+    </template>
+    
+    <template id="page-diy">
+        <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden p-6 sm:p-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-6">DIY Pest Control Tips</h1>
+                <p class="text-lg text-gray-700 mb-8">While many pest issues require a professional, here are a couple of effective DIY methods you can use to help protect your property. <strong class="font-semibold">Disclaimer:</strong> Always use caution and follow all safety instructions when handling any pest control materials.</p>
+
+                <!-- DIY Item 1 -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-green-700 mb-4">How to Make Homemade Tick Tubes</h2>
+                    <div class="space-y-4 text-gray-700 leading-relaxed">
+                        <p><strong class="font-semibold">What they do:</strong> Tick tubes are a targeted, low-impact way to reduce the tick population in your yard. They don't spray pesticides; instead, they use mice as the delivery system. Mice build their nests with cotton, and when we provide cotton treated with a very mild insecticide (Permethrin), it kills the ticks on them without harming the mice. Since mice are the primary hosts for Lyme-carrying ticks, this breaks the tick life cycle.</p>
+                        <p><strong class="font-semibold">Materials Needed:</strong></p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Cardboard tubes (from paper towels or toilet paper), or 4-inch sections of PVC pipe.</li>
+                            <li>Cotton balls or dryer lint.</li>
+                            <li>Permethrin concentrate (available at garden or farm supply stores).</li>
+                            <li>Gloves and eye protection.</li>
+                            <li>A small bucket or container for mixing.</li>
+                        </ul>
+                        <p><strong class="font-semibold">Instructions:</strong></p>
+                        <ol class="list-decimal list-inside space-y-2">
+                            <li>Put on your gloves and eye protection.</li>
+                            <li>In your bucket, mix the Permethrin solution according to the label's instructions for treating clothing.</li>
+                            <li>Add your cotton balls or dryer lint to the solution and let them get saturated.</li>
+                            <li>Squeeze out the excess liquid so the cotton is damp, not soaking wet.</li>
+                            <li>Let the cotton dry completely.</li>
+                            <li>Stuff the dry, treated cotton loosely into your cardboard or PVC tubes.</li>
+                            <li>Place the tubes in your yard in areas where mice travel: under bushes, along stone walls, in woodpiles, and under decks.</li>
+                            <li>Distribute them every 10-15 feet in high-activity areas.</li>
+                            <li>Replace the cotton twice a year: once in late spring and again in late summer.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- DIY Item 2 -->
+                <div>
+                    <h2 class="text-2xl font-semibold text-green-700 mb-4">Borax Ant Treatments</h2>
+                    <div class="space-y-4 text-gray-700 leading-relaxed">
+                        <p><strong class="font-semibold">What it does:</strong> This is a simple and effective homemade bait for sugar ants. Ants will take the bait back to the colony, feeding it to the queen and other ants, which helps eliminate the entire nest.</p>
+                        <p><strong class="font-semibold">Materials Needed:</strong></p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Borax (household cleaner, found in the laundry aisle).</li>
+                            <li>Sugar (granulated).</li>
+                            <li>Warm water.</li>
+                            <li>Small containers with lids (like old yogurt cups) or bottle caps.</li>
+                            <li>Cotton balls (optional).</li>
+                        </ul>
+                        <p><strong class="font-semibold">Instructions:</strong></p>
+                        <ol class="list-decimal list-inside space-y-2">
+                            <li>Mix a solution of <strong>1 part Borax to 3 parts sugar</strong>. (e.g., 1 tablespoon of Borax and 3 tablespoons of sugar).</li>
+                            <li>Add just enough warm water to dissolve the sugar and Borax, creating a thick, sugary syrup.</li>
+                            <li>Punch small holes in the sides of your plastic container lids, large enough for ants to crawl through.</li>
+                            <li>Dip cotton balls in the solution and place them inside the container, then put the lid on. Alternatively, you can just pour a small amount of the liquid bait into a bottle cap.</li>
+                            <li>Place your bait stations in areas where you see ant trails. <strong class="font-semibold">CRITICAL: Keep these baits far out of reach of children and pets.</strong> Borax is toxic if ingested.</li>
+                            <li>Check the baits every few days and refill as needed. Be patient; it can take a week or more to see a significant reduction as the bait works its way through the colony.</li>
+                        </ol>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </template>
+    
+    <template id="page-faq">
+        <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden p-6 sm:p-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h1>
+                
+                <div class="space-y-6">
+                    <!-- FAQ Category -->
+                    <h2 class="text-2xl font-semibold text-green-700 mb-4 border-b pb-2">Rodent Questions (Mice & Rats)</h2>
+                    <div class="faq-item border-b">
+                        <button class="faq-question w-full flex justify-between items-center text-left py-4">
+                            <span class="text-lg font-medium text-gray-900">What's the difference between a mouse and a rat?</span>
+                            <i data-lucide="chevron-down" class="faq-arrow h-6 w-6 text-gray-500"></i>
+                        </button>
+                        <div class="faq-answer pb-4 text-gray-700 leading-relaxed">
+                            <p>Several key things! Rats are much larger than mice. An adult rat is 5-10 times bigger than an adult mouse. Rat droppings are also much larger, about the size of a bean, while mouse droppings are small and pointed, like a grain of rice. Mice are curious, while rats are neophobic (afraid of new things), which makes them much harder to trap.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item border-b">
+                        <button class="faq-question w-full flex justify-between items-center text-left py-4">
+                            <span class="text-lg font-medium text-gray-900">I set snap traps, but they're not working! Why?</span>
+                            <i data-lucide="chevron-down" class="faq-arrow h-6 w-6 text-gray-500"></i>
+                        </button>
+                        <div class="faq-answer pb-4 text-gray-700 leading-relaxed">
+                            <p>This is a very common problem! Rodents, especially rats, are neophobic (afraid of new things) and very smart. They can learn to avoid traps, recognize them as dangerous, or even learn to take the bait without setting off the trap. While traps might catch one or two, they are often not an effective long-term solution for an established population.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item border-b">
+                        <button class="faq-question w-full flex justify-between items-center text-left py-4">
+                            <span class="text-lg font-medium text-gray-900">I have rats! Does this mean my house is dirty?</span>
+                            <i data-lucide="chevron-down" class="faq-arrow h-6 w-6 text-gray-500"></i>
+                        </button>
+                        <div class="faq-answer pb-4 text-gray-700 leading-relaxed">
+                            <p>Not at all. While open trash can be an attractant, rats are often displaced from their normal homes. Nearby construction, landscaping, or even a neighbor's new shed can push a rat population to explore, and they can end up in your yard. Rats live in burrows in the ground and are excellent climbers, so cleanliness is often not the primary factor.</p>
+                        </div>
+                    </div>
                     
-                    <!-- Disclaimer -->
-                    <div class="bg-red-100 border-l-4 border-red-600 text-red-800 p-4 rounded-lg mb-6" role="alert">
-                        <p class="font-bold text-lg mb-2">CRITICAL SAFETY WARNING</p>
-                        <p>This calculator is for informational and educational purposes ONLY. It provides a theoretical dose calculation and is **NOT a substitute for professional veterinary advice.**</p>
-                        <p class="mt-2 font-semibold">If you suspect your pet has ingested ANY poison, contact your veterinarian or the <a href="https://www.aspca.org/pet-care/animal-poison-control" target="_blank" rel="noopener" class="underline hover:text-red-900">ASPCA Animal Poison Control Center</a> (888-426-4435) immediately.</p>
+                    <!-- FAQ Category -->
+                    <h2 class="text-2xl font-semibold text-green-700 mt-10 mb-4 border-b pb-2">Tick, Mole & Vole Questions</h2>
+                    <div class="faq-item border-b">
+                        <button class="faq-question w-full flex justify-between items-center text-left py-4">
+                            <span class="text-lg font-medium text-gray-900">What is the difference between moles and voles?</span>
+                            <i data-lucide="chevron-down" class="faq-arrow h-6 w-6 text-gray-500"></i>
+                        </button>
+                        <div class="faq-answer pb-4 text-gray-700 leading-relaxed">
+                            <p>It's simple: <strong class="font-semibold">Moles eat meat, Voles eat vegetation.</strong></p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li><strong class="font-semibold">Moles</strong> are insectivores. They dig deep, volcano-shaped mounds in your yard to hunt for grubs and earthworms. They create tunnels, but they don't eat your plants.</li>
+                                <li><strong class="font-semibold">Voles</strong> are rodents (like mice). They eat plants, bulbs, and tree bark. They create shallow, snake-like tunnels on the surface of the lawn and will chew the base of your shrubs.</li>
+                            </ul>
+                            <p class="mt-2">If you have grubs, you probably have moles. If your plants are disappearing, you probably have voles.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item border-b">
+                        <button class="faq-question w-full flex justify-between items-center text-left py-4">
+                            <span class="text-lg font-medium text-gray-900">When is the best time for tick control?</span>
+                            <i data-lucide="chevron-down" class="faq-arrow h-6 w-6 text-gray-500"></i>
+                        </button>
+                        <div class="faq-answer pb-4 text-gray-700 leading-relaxed">
+                            <p>Tick activity peaks twice a year in Massachusetts. The first is in <strong class="font-semibold">May and June</strong> (nymphal ticks) and the second is in <strong class="font-semibold">September and October</strong> (adult ticks). We recommend treatments just before these peaks to have the greatest impact. However, ticks can be active any day the temperature is above freezing, so a year-round plan is the best protection.</p>
+                        </div>
                     </div>
 
+                    <!-- FAQ Category -->
+                    <h2 class="text-2xl font-semibold text-green-700 mt-10 mb-4 border-b pb-2">Pest Control Method Questions</h2>
+                    <div class="faq-item border-b">
+                        <button class="faq-question w-full flex justify-between items-center text-left py-4">
+                            <span class="text-lg font-medium text-gray-900">Is rodenticide safe to use around my pets?</span>
+                            <i data-lucide="chevron-down" class="faq-arrow h-6 w-6 text-gray-500"></i>
+                        </button>
+                        <div class="faq-answer pb-4 text-gray-700 leading-relaxed">
+                            <p>Your pet's safety is our highest priority. All rodenticide is placed in <strong class="font-semibold">locked, tamper-proof bait stations</strong>. These stations are designed so a pet or child cannot open them or access the bait inside. A small animal like a mouse or rat can enter, but a dog, cat, or raccoon cannot.</p>
+                            <p class="mt-2"><strong class="font-semibold">What about secondary poisoning?</strong> This is a common concern. Secondary poisoning (e.g., a hawk or a dog eating a poisoned rodent) is a risk with some types of rodenticides. We use products and strategies designed to minimize this risk. We can also prioritize non-toxic options like the contraceptive bait or trapping if you have major concerns.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item border-b">
+                        <button class="faq-question w-full flex justify-between items-center text-left py-4">
+                            <span class="text-lg font-medium text-gray-900">How does the rodent contraceptive work?</span>
+                            <i data-lucide="chevron-down" class="faq-arrow h-6 w-6 text-gray-500"></i>
+                        </button>
+                        <div class="faq-answer pb-4 text-gray-700 leading-relaxed">
+                            <p>It's a non-toxic bait that causes temporary infertility in both male and female rodents. It is <strong class="font-semibold">not a sterilization</strong>—it simply prevents reproduction for as long as they consume the bait. This is an excellent, safe, and long-term strategy. Instead of just removing the current population (which new rodents will quickly replace), it stops the population from growing. It is safe for all non-target animals and has no risk of secondary poisoning.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <template id="page-safety">
+        <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden p-6 sm:p-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-6">Safety Info & Product Labels</h1>
+                <p class="text-lg text-gray-700 mb-8">Transparency is important to us. Here you can find more information about product safety and view labels and Safety Data Sheets (SDS) for products we may use.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- Calculator -->
                     <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
                         <h2 class="text-2xl font-semibold text-green-700 mb-4">Theoretical LD50 Calculator</h2>
@@ -385,261 +526,312 @@ V                            </div>
                                 <input type="text" id="animal-weight" inputmode="decimal" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\./g, '$1')" class="mt-1 block w-full md:w-1/2 rounded-lg border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="e.g., 20">
                             </div>
                             
-                            <!-- REMOVED AI PER BLOCK INPUT FIELD -->
-                            
                             <button id="calculate-ld50" class="px-6 py-2 bg-green-700 text-white font-semibold rounded-lg shadow-md hover:bg-green-800 transition focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
                                 Calculate
                             </button>
                         </div>
                         
-                        <!-- Result -->
-                        <div id="ld50-result" class="mt-6 hidden">
-                            <h3 class="text-xl font-semibold">Result:</h3>
-                            <p class="text-lg p-4 bg-green-50 border border-green-200 rounded-lg"></p>
-                            <p class="text-sm text-gray-600 mt-2">
-                                <strong>Note:</strong> This result represents the number of blocks the animal would need to consume *directly* to reach the theoretical LD50, based on your inputs and the 1.47 mg/kg ratio. This is not a toxicity guarantee.
-                            </p>
+                        <div id="ld50-result" class="hidden mt-6 bg-green-50 border border-green-200 p-4 rounded-lg">
+                            <p class="text-green-800"></p>
                         </div>
+
+                        <p class="mt-6 text-xs text-gray-500 italic">
+                            <strong>Disclaimer:</strong> This calculator is for informational and demonstrative purposes ONLY. It is a theoretical estimate based on fixed values. It is NOT a substitute for professional veterinary advice. If you suspect your pet has ingested any poison, contact your veterinarian or the ASPCA Animal Poison Control Center (888-426-4435) immediately.
+                        </p>
                     </div>
 
-                    <!-- ADDED LABELS & SDS CONTENT -->
-                    <hr class="my-8 border-gray-200">
-                    <div class="mt-8">
-                        <h1 class="text-3xl font-bold text-green-800 mb-6">Product Labels & SDS</h1>
-                        <p class="text-lg mb-6">For your convenience and safety, we provide links to the manufacturer's product labels and Safety Data Sheets (SDS) for the materials we may use. Always read the label before any application.</p>
-                        
-                        <div class="space-y-6">
-                            <!-- Section: Rodenticides -->
-                            <div>
-                                <h2 class="text-2xl font-semibold text-green-700 mb-3 pb-2 border-b border-gray-200">Rodenticides</h2>
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li>
-                                        <strong class="font-medium">Product Name 1:</strong>
-                                        <a href="#" class="text-green-700 hover:underline ml-2">[View Label]</a>
-                                        <a href="#" class="text-green-700 hover:underline ml-2">[View SDS]</a>
-                                    </li>
-                                    <li>
-                                        <strong class="font-medium">Product Name 2 (e.g., Contraceptive):</strong>
-                                        <a href="#" class="text-green-700 hover:underline ml-2">[View Label]</a>
-                                        <a href="#" class="text-green-700 hover:underline ml-2">[View SDS]</a>
-                                    </li>
-                                    <!-- Add more as needed -->
-                                    <li class="text-gray-500">More product links coming soon...</li>
-                                </ul>
-                            </div>
-                            
-                            <!-- Section: Tick & Grub Control -->
-                            <div>
-                                <h2 class="text-2xl font-semibold text-green-700 mb-3 pb-2 border-b border-gray-200">Tick & Grub Control</h2>
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li>
-                                        <strong class="font-medium">Product Name 3:</strong>
-                                        <a href="#" class="text-green-700 hover:underline ml-2">[View Label]</a>
-                                        <a href="#" class="text-green-700 hover:underline ml-2">[View SDS]</a>
-                                    </li>
-                                    <li class="text-gray-500">More product links coming soon...</li>
-                                </ul>
-                            </div>
-
-                            <!-- Section: Perimeter Spray -->
-                            <div>
-                                <h2 class="text-2xl font-semibold text-green-700 mb-3 pb-2 border-b border-gray-200">Perimeter Spray</h2>
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li>
-                                        <strong class="font-medium">Product Name 4:</strong>
-                                        <a href="#" class="text-green-700 hover:underline ml-2">[View Label]</a>
-                                        <a href="#" class="text-green-700 hover:underline ml-2">[View SDS]</a>
-                                    </li>
-                                    <li class="text-gray-500">More product links coming soon...</li>
-                                </ul>
-                            </div>
+                    <!-- Labels & SDS -->
+                    <div class="p-6">
+                        <h2 class="text-2xl font-semibold text-green-700 mb-4">Product Labels & SDS</h2>
+                        <p class="mb-4">Click to view or download the product labels and Safety Data Sheets (SDS) for products we use.</p>
+                        <div class="space-y-3">
+                            <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 hover:underline">
+                                <i data-lucide="file-text" class="h-5 w-5 mr-2"></i>
+                                Product 1 Label (Link)
+                            </a>
+                            <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 hover:underline">
+                                <i data-lucide="file-text" class="h-5 w-5 mr-2"></i>
+                                Product 1 SDS (Link)
+                            </a>
+                            <div class="border-t my-3"></div>
+                            <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 hover:underline">
+                                <i data-lucide="file-text" class="h-5 w-5 mr-2"></i>
+                                Product 2 Label (Link)
+                            </a>
+                            <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 hover:underline">
+                                <i data-lucide="file-text" class="h-5 w-5 mr-2"></i>
+                                Product 2 SDS (Link)
+                            </a>
+                            <!-- Add more links as needed -->
                         </div>
                     </div>
-                    <!-- END OF ADDED CONTENT -->
-
                 </div>
             </div>
-
-            <!-- New Labels & SDS Page -->
-            <!-- THIS PAGE'S CONTENT WAS MOVED TO THE 'SAFETY' PAGE -->
-
-
-        </main>
-
-        <!-- Footer -->
-        <footer class="bg-green-900 text-green-200 mt-12 py-6">
-            <div class="container mx-auto px-4 text-center">
-                <p>&copy; <span id="current-year"></span> Wildland Pest Control. All rights reserved.</p>
-                <p class="text-sm">Serving Plymouth, MA and surrounding towns.</p>
+        </div>
+    </template>
+    
+    <template id="page-contact">
+        <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <!-- Contact Info -->
+                    <div class="p-6 sm:p-8 bg-green-700 text-white">
+                        <h1 class="text-3xl font-bold mb-6">Contact Us</h1>
+                        <p class="text-lg text-green-100 mb-8">Ready to solve your pest problem? Get in touch with us for a free consultation. We're here to help.</p>
+                        
+                        <div class="space-y-6">
+                            <!-- Phone -->
+                            <div class="flex items-start space-x-4">
+                                <i data-lucide="phone" class="h-6 w-6 text-green-200 mt-1"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold">Phone</h3>
+                                    <p class="text-green-100">Call or Text for a free consultation.</p>
+                                    <a href="tel:508-503-9886" class="text-lg text-white font-bold hover:underline">(508) 503-9886</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="flex items-start space-x-4">
+                                <i data-lucide="mail" class="h-6 w-6 text-green-200 mt-1"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold">Email</h3>
+                                    <p class="text-green-100">Send us a message anytime.</p>
+                                    <a href="mailto:wildlandpest@gmail.com" class="text-lg text-white font-bold hover:underline">wildlandpest@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Mailing Address (Commented Out) -->
+                            <!--
+                            <div class="flex items-start space-x-4">
+                                <i data-lucide="mailbox" class="h-6 w-6 text-green-200 mt-1"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold">Mailing Address</h3>
+                                    <p class="text-lg text-green-100">PO Box TBD</p>
+                                </div>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                    
+                    <!-- Image -->
+                    <div class="hidden md:block">
+                        <!-- FIX: Changed placeholder color to match theme and removed text -->
+                        <img src="https://placehold.co/600x600/065f46/FFFFFF?text=" alt="Contact" class="h-full w-full object-cover">
+                    </div>
+                </div>
             </div>
-        </footer>
-    </div>
-
+        </div>
+    </template>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Set current year in footer
-            document.getElementById('current-year').textContent = new Date().getFullYear();
+            const mainContent = document.getElementById('main-content');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = document.getElementById('menu-icon-open');
+            const menuIconClose = document.getElementById('menu-icon-close');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            const logoLink = document.querySelector('.nav-link-logo');
 
             // --- SEO Data ---
-            // Store the titles and descriptions for each page
             const pageSeo = {
                 'home': {
-                    'title': 'Wildland Pest Control | Plymouth, MA',
-                    'description': 'Environmentally-friendly pest and critter control in Plymouth, MA. Wildland Pest Control offers safe, effective solutions for ticks, rodents, grubs, and insects. Get a free consultation.'
+                    'title': 'Wildland Pest Control | Plymouth, MA & South Shore',
+                    'description': 'Eco-friendly pest and critter control in Plymouth, MA. We specialize in ticks, rodents, and insects for Kingston, Carver, Wareham, and Plympton.'
                 },
                 'services': {
-                    'title': 'Pest Control Services | Wildland Pest Control',
-                    'description': 'Our local pest and critter control services include rodent contraceptive, tick/grub control, and perimeter spraying. Serving Plymouth, MA, Kingston, Carver, and more.'
+                    'title': 'Pest Control Services & Locations | Wildland Pest Control',
+                    'description': 'Eco-friendly rodent contraceptive, tick/grub control, and insect spraying. Serving Plymouth, Kingston, Carver, Wareham, Plympton, and Sagamore.'
                 },
                 'diy': {
                     'title': 'DIY Pest Control Tips | Wildland Pest Control',
-                    'description': 'Learn effective DIY pest and critter control from the experts. How to make homemade tick tubes and safe Borax ant treatments to protect your home.'
+                    'description': 'Learn effective DIY pest control from the experts. How to make homemade tick tubes and safe Borax ant treatments to protect your home.'
                 },
                 'faq': {
                     'title': 'Pest Control FAQ | Wildland Pest Control',
-                    'description': 'Pest and critter questions? Our FAQ answers common questions about mice, rats, ticks in Massachusetts, and the difference between moles and voles. Get answers now.'
+                    'description': 'Pest questions? Our FAQ answers common questions about mice, rats, ticks in Massachusetts, and the difference between moles and voles. Get answers now.'
                 },
                 'safety': {
-                    'title': 'Safety, Labels & SDS | Wildland Pest Control',
-                    'description': 'View safety info, product labels, SDS, and use our educational LD50 calculator. Not a substitute for professional veterinary advice.'
+                    'title': 'Safety Info & Labels | Wildland Pest Control',
+                    'description': 'View product safety data sheets (SDS), labels, and use our LD50 calculator to understand our eco-friendly pest control methods.'
                 },
                 'contact': {
                     'title': 'Contact Us | Wildland Pest Control',
-                    'description': 'Contact Wildland Pest Control today for a free consultation. Call or email us to schedule your environmentally-safe pest and critter control service in the Plymouth, MA area.'
+                    'description': 'Contact Wildland Pest Control today for a free consultation. Call or email us to schedule your environmentally-safe pest service in the Plymouth, MA area.'
                 }
             };
-            const metaDescriptionTag = document.getElementById('meta-description');
-
-            // --- Page Navigation Logic ---
-            const allPages = document.querySelectorAll('.page-content');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-
-            function showPage(pageId) {
-                // Hide all pages
-                allPages.forEach(page => {
-                    page.classList.add('hidden');
-                });
-
-                // Show the target page
-                const targetPage = document.getElementById(pageId);
-                if (targetPage) {
-                    targetPage.classList.remove('hidden');
-                }
-
-                // --- Update SEO ---
-                const seoData = pageSeo[pageId] || pageSeo['home'];
-                document.title = seoData.title;
-                metaDescriptionTag.setAttribute('content', seoData.description);
-
-                // Update active state for desktop nav
-                navLinks.forEach(link => {
-                    if (link.dataset.page === pageId) {
-                        link.classList.add('nav-link-active');
-                    } else {
-                        link.classList.remove('nav-link-active');
-                    }
-                });
-
-                // Update active state for mobile nav
-                mobileNavLinks.forEach(link => {
-                    if (link.dataset.page === pageId) {
-                        link.classList.add('mobile-nav-link-active');
-                    } else {
-                        link.classList.remove('mobile-nav-link-active');
-                    }
-                });
-
-                // Hide mobile menu after selection
-                mobileMenu.classList.add('hidden');
-
-                // Scroll to top of page
-                window.scrollTo(0, 0);
-            }
-
-            // Add click listeners to all nav links (desktop)
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pageId = this.dataset.page;
-                    showPage(pageId);
-                });
-            });
-
-             // Add click listeners to all nav links (mobile)
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pageId = this.dataset.page;
-                    showPage(pageId);
-                });
-            });
-
-            // --- Mobile Menu Toggle ---
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // --- FAQ Accordion Logic ---
-            const faqToggles = document.querySelectorAll('.faq-toggle');
-
-            faqToggles.forEach(toggle => {
-                toggle.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    const icon = this.querySelector('.faq-icon svg');
-                    
-                    // Toggle visibility of the content
-                    content.classList.toggle('hidden');
-
-                    // Rotate icon
-                    if (content.classList.contains('hidden')) {
-                        icon.style.transform = 'rotate(0deg)';
-                    } else {
-                        icon.style.transform = 'rotate(180deg)';
-                    }
-                });
-            });
-
-            // --- LD50 Calculator Logic ---
-            const calculateBtn = document.getElementById('calculate-ld50');
-            const weightInput = document.getElementById('animal-weight');
-            // REMOVED AI INPUT
-            const resultDiv = document.getElementById('ld50-result');
-            const resultText = resultDiv.querySelector('p');
-
-            calculateBtn.addEventListener('click', function() {
-                const weightLbs = parseFloat(weightInput.value);
-                // REMOVED AI PARSE
-                // UPDATED: 1 oz (28349.5mg) * 0.005% (0.00005) = 1.417475 mg
-                const aiPerBlock = 1.417475; 
-                
-                // UPDATED Validation
-                if (isNaN(weightLbs) || weightLbs <= 0) {
-                    resultText.innerHTML = '<span class="font-semibold text-red-600">Please enter a valid, positive number for weight.</span>';
-                    resultDiv.classList.remove('hidden');
+            
+            // --- Page Navigation ---
+            function loadPage(pageName) {
+                // Get template content
+                const template = document.getElementById(`page-${pageName}`);
+                if (!template) {
+                    console.error('Page template not found:', pageName);
                     return;
                 }
+                const content = template.content.cloneNode(true);
                 
-                // --- Calculation ---
-                // 1. Convert lbs to kg
-                const weightKg = weightLbs * 0.453592;
+                // Clear main content and add new page
+                mainContent.innerHTML = '';
+                mainContent.appendChild(content);
+
+                // Update SEO
+                updateSeo(pageName);
+
+                // Update active links
+                updateActiveLinks(pageName);
                 
-                // 2. Calculate total mg for LD50 (using your provided 1.47 mg/kg ratio)
-                const totalMgLD50 = weightKg * 1.47;
+                // Add event listeners for new page
+                if (pageName === 'faq') {
+                    initFaqToggles();
+                }
+                if (pageName === 'safety') {
+                    initLd50Calculator();
+                }
+
+                // Scroll to top
+                window.scrollTo(0, 0);
+
+                // Initialize icons
+                // *** FIX HERE: Check if lucide is loaded before calling it ***
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            }
+
+            // --- SEO & Title Update ---
+            function updateSeo(pageName) {
+                const seo = pageSeo[pageName];
+                if (!seo) return;
+
+                // Update Title
+                document.title = seo.title;
+
+                // Update Meta Description
+                let descriptionTag = document.querySelector('meta[name="description"]');
+                if (!descriptionTag) {
+                    descriptionTag = document.createElement('meta');
+                    descriptionTag.name = "description";
+                    document.head.appendChild(descriptionTag);
+                }
+                descriptionTag.content = seo.description;
+            }
+
+            // --- Active Link Styling ---
+            function updateActiveLinks(pageName) {
+                // Desktop
+                navLinks.forEach(link => {
+                    if (link.dataset.page === pageName) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
                 
-                // 3. Calculate number of blocks
-                const blocksToConsume = totalMgLD50 / aiPerBlock;
-                
-                // 4. Display result
-                resultText.innerHTML = `A theoretical LD50 dose for a <span class="font-semibold">${weightLbs} lb</span> animal would require consuming <span class="font-semibold">${blocksToConsume.toFixed(2)}</span> blocks.`;
-                resultDiv.classList.remove('hidden');
+                // Mobile
+                mobileNavLinks.forEach(link => {
+                    if (link.dataset.page === pageName) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+
+            // --- Mobile Menu Toggle ---
+            mobileMenuButton.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('hidden');
+                menuIconOpen.classList.toggle('hidden', !isOpen);
+                menuIconClose.classList.toggle('hidden', isOpen);
             });
 
+            // --- Navigation Event Listeners ---
+            function setupNavLinks(links) {
+                links.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const pageName = link.dataset.page;
+                        loadPage(pageName);
+                        
+                        // Close mobile menu if open
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            menuIconOpen.classList.remove('hidden');
+                            menuIconClose.classList.add('hidden');
+                        }
+                    });
+                });
+            }
+            
+            setupNavLinks(navLinks);
+            setupNavLinks(mobileNavLinks);
+            logoLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadPage('home');
+            });
+
+            // --- FAQ Toggle Logic ---
+            function initFaqToggles() {
+                const faqItems = mainContent.querySelectorAll('.faq-item');
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question');
+                    question.addEventListener('click', () => {
+                        // Close all other items
+                        faqItems.forEach(otherItem => {
+                            if (otherItem !== item && otherItem.classList.contains('open')) {
+                                otherItem.classList.remove('open');
+                            }
+                        });
+                        // Toggle current item
+                        item.classList.toggle('open');
+                    });
+                });
+            }
+
+            // --- LD50 Calculator Logic ---
+            function initLd50Calculator() {
+                const calculateBtn = document.getElementById('calculate-ld50');
+                const weightInput = document.getElementById('animal-weight');
+                const resultDiv = document.getElementById('ld50-result');
+                const resultText = resultDiv.querySelector('p');
+
+                calculateBtn.addEventListener('click', function() {
+                    const weightLbs = parseFloat(weightInput.value);
+                    // UPDATED: 1 oz (28349.5mg) * 0.005% (0.00005) = 1.417475 mg
+                    const aiPerBlock = 1.417475; 
+                    
+                    // UPDATED Validation
+                    if (isNaN(weightLbs) || weightLbs <= 0) {
+                        resultText.innerHTML = '<span class="font-semibold text-red-600">Please enter a valid, positive number for weight.</span>';
+                        resultDiv.classList.remove('hidden');
+                        return;
+                    }
+                    
+                    // --- Calculation ---
+                    // 1. Convert lbs to kg
+                    const weightKg = weightLbs / 2.20462;
+                    
+                    // 2. Calculate total mg needed for LD50
+                    // Using 1.47mg/kg as the LD50 ratio
+                    const totalMgLD50 = weightKg * 1.47;
+                    
+                    // 3. Calculate number of blocks
+                    const blocks = totalMgLD50 / aiPerBlock;
+                    
+                    // --- Display Result ---
+                    resultText.innerHTML = `An animal weighing <strong class="font-semibold">${weightLbs} lbs</strong> would theoretically need to consume <strong class="font-semibold">${blocks.toFixed(2)} blocks</strong> to reach the LD50.`;
+                    resultDiv.classList.remove('hidden');
+                });
+            }
+
+            // --- Footer Year ---
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // --- Initial Page Load ---
+            loadPage('home');
         });
     </script>
-
 </body>
 </html>
 
